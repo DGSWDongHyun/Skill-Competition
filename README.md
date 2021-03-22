@@ -23,8 +23,8 @@
 
 2. 코틀린과 자바의 가장 큰 차이점 ? - NullPointerException.
 
-    NullPointerException이다. 해당 오류는 개발자가 선언한 객체에 참조 값이 Null이고, 해당 인스턴스에 있는 메소드를 호출 시킬때 
-    발생하는 오류라고 할 수 입니다. 자바는 해당 NullPointerException를 명시적으로 처리하는 것을 할 수 없는 반면에 코틀린은 명시적으로 처리할 수가 있습니다. !!는 Non-null , 
+    NullPointerException은 객체의 참조 값이 null일때 발생하는 RuntimeException인데,
+    자바는 해당 NullPointerException를 명시적으로 처리하는 것을 할 수 없는 반면에 코틀린은 명시적으로 처리할 수가 있습니다. !!는 Non-null , 
     null이 발생할 수가 없다는 뜻이고, ?는 null값을 참조할 수도 있다는 의미이다 라는 것을 배웠습니다.
 
 
