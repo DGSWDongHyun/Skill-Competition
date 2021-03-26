@@ -7,20 +7,20 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.simple.module2.ui.home.HomeFragment"
+        android:name="com.simple.module2.ui.fragments.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.simple.module2.ui.gallery.GalleryFragment"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_charge"
+        android:name="com.simple.module2.ui.fragments.charge.ChargeFragment"
+        tools:layout="@layout/fragment_charge" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.simple.module2.ui.slideshow.SlideshowFragment"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_info"
+        android:name="com.simple.module2.ui.fragments.info.InfoFragment"
+        tools:layout="@layout/fragment_info" />
     <fragment
-        android:id="@+id/fragment_search"
-        android:name="com.simple.module2.ui.search.SearchFragment"
+        android:id="@+id/nav_search"
+        android:name="com.simple.module2.ui.fragments.search.SearchFragment"
         tools:layout="@layout/fragment_search" />
 </navigation>

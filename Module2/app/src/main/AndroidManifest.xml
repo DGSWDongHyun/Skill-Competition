@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Module2">
-        <activity android:name=".SplashActivity"></activity>
+        <activity android:name="com.simple.module2.ui.activites.SplashActivity"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.simple.module2.ui.activites.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Module2.NoActionBar">
             <intent-filter>

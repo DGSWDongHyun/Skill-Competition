@@ -1,4 +1,4 @@
-package com.simple.module2.adapter
+package com.simple.module2.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,4 +1,4 @@
-package com.simple.module2.ui.search
+package com.simple.module2.ui.fragments.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
