@@ -2,6 +2,8 @@ package com.simple.module2.ui.activites
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,12 +13,20 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.simple.module2.DrawerItems
 import com.simple.module2.R
+import com.simple.module2.ResAmountModel
+import com.simple.module2.net.RetrofitModule
+import com.simple.module2.net.retrofit.Retrofit
 import com.simple.module2.ui.adapter.NavigationDrawerAdapter
+import com.simple.module2.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,12 +41,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateWidget() {
+
+        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        val service = RetrofitModule.getInstance()
+        val api = service.create(Retrofit::class.java)
+        val amountText = findViewById<TextView>(R.id.amountText)
+
+        api.getAmount().enqueue(object : Callback<ResAmountModel>{
+            override fun onResponse(
+                call: Call<ResAmountModel>,
+                response: Response<ResAmountModel>
+            ) {
+                if(response.code() == 200) {
+                    viewModel.availablePrice.value = response.body()!!.amount.toString()
+                }
+            }
+
+            override fun onFailure(call: Call<ResAmountModel>, t: Throwable) {
+                Log.d("TAG", "${t.message}")
+            }
+        })
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
+
+        viewModel.availablePrice.observe(this, {
+            amountText.text = "${it}원"
+        })
 
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home, R.id.nav_search, R.id.nav_charge, R.id.nav_info
