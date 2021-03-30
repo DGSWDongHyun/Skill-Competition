@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 class SearchFragment : Fragment() {
 
     var dataList : ArrayList<SearchedModel> = arrayListOf()
+    private lateinit var adapter : SearchedAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,7 +36,7 @@ class SearchFragment : Fragment() {
 
         checkRecentView(view)
 
-        val adapter = SearchedAdapter(dataList, object : onItemDeleteListener {
+        adapter = SearchedAdapter(dataList, object : onItemDeleteListener {
             override fun onDelete(data: SearchedModel) {
                 dataList.remove(data)
                 checkRecentView(view)
@@ -51,6 +52,8 @@ class SearchFragment : Fragment() {
                 dataList.add(SearchedModel(query))
                 adapter.setData(dataList)
                 checkRecentView(view)
+
+                searchView.setQuery("", false)
 
                 return true
             }
@@ -77,6 +80,8 @@ class SearchFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         dataList = SearchedListObject.searchedList
+        adapter.setData(dataList)
+        checkRecentView(requireView())
     }
 
     override fun onDestroy() {
