@@ -1,5 +1,6 @@
 package com.simple.module2_3
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,12 +32,17 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        startActivity(Intent(this, SplashActivity::class.java))
+
+       updateWidget()
+    }
+
+    fun updateWidget() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navBottomView : BottomNavigationView = findViewById(R.id.bottomNavView)
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.nav_home, R.id.nav_search, R.id.nav_charge, R.id.nav_info), drawerLayout)
 
