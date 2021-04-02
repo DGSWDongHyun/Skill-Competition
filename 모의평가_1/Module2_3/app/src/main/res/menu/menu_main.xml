@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_24px"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search_24px"
+        android:title="검색" />
+
+    <item
+        android:id="@+id/nav_charge"
+        android:icon="@drawable/ic_attach_money_24px"
+        android:title="충전" />
+
+    <item
+        android:id="@+id/nav_info"
+        android:icon="@drawable/ic_supervised_user_circle_24px"
+        android:title="내 정보" />
+</menu>
